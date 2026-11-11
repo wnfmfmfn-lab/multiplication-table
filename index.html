@@ -3,81 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>신나는 구구단 챌린지! 🎈</title>
+  <title>쟈니 쌤과 함께하는 구구단 연습 게임! 👑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Round&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="theme-princess">
   <div class="game-container">
-    <!-- 헤더 / 제목 영역 -->
-    <header class="game-header">
-      <h1 class="game-title">신나는 구구단 챌린지! 🎈</h1>
-      <p class="game-subtitle">5초 안에 정답을 맞춰보세요!</p>
+    <!-- 상단: 테마 선택 버튼 -->
+    <header class="theme-selector-bar">
+      <span class="theme-label">🎨 테마 고르기:</span>
+      <div class="theme-btn-group">
+        <button type="button" id="theme-princess-btn" class="theme-btn active">
+          💖 핑크 공주
+        </button>
+        <button type="button" id="theme-prince-btn" class="theme-btn">
+          👑 하늘 왕자
+        </button>
+      </div>
     </header>
 
-    <!-- 스코어보드 영역: 현재 점수, 콤보, 푼 문제 수 -->
-    <section class="scoreboard" aria-label="점수판">
-      <div class="score-card">
-        <span class="label">점수 🌟</span>
-        <span class="value" id="score-display">0</span>
+    <!-- 게임 헤더 -->
+    <section class="game-header">
+      <h1 class="game-title">👑 구구단 모험 게임 ⚔️</h1>
+      <p class="game-subtitle">2단부터 9단까지! 총 10문제를 풀어보아요</p>
+    </section>
+
+    <!-- 진행도 표시기 (10문제 인디케이터) -->
+    <section class="progress-bar-container" aria-label="진행 현황">
+      <div class="progress-info">
+        <span class="question-number-badge" id="question-progress-text">문제 1 / 10</span>
+        <span class="score-badge" id="current-score-text">맞은 개수: 0개</span>
       </div>
-      <div class="score-card">
-        <span class="label">연속 정답 🔥</span>
-        <span class="value" id="combo-display">0</span>
-      </div>
-      <div class="score-card">
-        <span class="label">푼 문제 📝</span>
-        <span class="value" id="count-display">0</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width: 10%;"></div>
       </div>
     </section>
 
-    <!-- 타이머 영역: 남은 시간 텍스트 및 프로그레스 바 게이지 -->
-    <section class="timer-section" aria-label="제한 시간">
-      <div class="timer-info">
-        <span class="timer-label">⏰ 남은 시간:</span>
-        <span class="timer-text" id="timer-text">5.0초</span>
+    <!-- 캐릭터 & 말풍선 (쟈니 쌤) -->
+    <section class="teacher-container">
+      <div class="teacher-avatar" id="teacher-avatar" aria-hidden="true">
+        👩‍🏫
       </div>
-      <div class="timer-progress-container" aria-hidden="true">
-        <div class="timer-bar" id="timer-bar" style="width: 100%;"></div>
+      <div class="teacher-bubble">
+        <div class="teacher-name" id="teacher-name">선생님 '쟈니 쌤'</div>
+        <div class="teacher-speech" id="teacher-speech">
+          "안녕! 나는 쟈니 쌤이야. 구구단 10문제를 멋지게 풀어볼까?"
+        </div>
       </div>
     </section>
 
-    <!-- 문제 카드 영역 -->
-    <main class="question-container">
-      <div class="question-card" id="question-card">
-        <div class="math-problem">
-          <span class="num" id="num1">?</span>
-          <span class="operator" id="operator">×</span>
-          <span class="num" id="num2">?</span>
-          <span class="equal">=</span>
-          <span class="question-mark">?</span>
+    <!-- 퀴즈 화면 -->
+    <main class="quiz-screen" id="quiz-screen">
+      <div class="problem-card" id="problem-card">
+        <div class="multiplication-display">
+          <span class="num-box" id="num-a">2</span>
+          <span class="calc-op">×</span>
+          <span class="num-box" id="num-b">3</span>
+          <span class="calc-equal">=</span>
+          <span class="num-box question-box">?</span>
         </div>
       </div>
 
-      <!-- 답안 입력 및 조작 영역 -->
+      <!-- 답안 입력 폼 -->
       <form class="answer-form" id="answer-form" onsubmit="return false;">
-        <div class="input-wrapper">
+        <div class="input-row">
           <input
             type="number"
             id="answer-input"
             class="answer-input"
             inputmode="numeric"
             pattern="[0-9]*"
-            placeholder="정답은?"
-            autofocus
+            placeholder="답 입력"
             autocomplete="off"
             aria-label="정답 입력"
           >
-          <button type="submit" id="submit-btn" class="action-btn submit-btn">확인</button>
+          <button type="submit" id="check-btn" class="action-btn check-btn">확인</button>
         </div>
-        <button type="button" id="next-btn" class="action-btn next-btn hidden">다음 문제 ➡️</button>
       </form>
 
-      <!-- 피드백 및 결과 메시지 영역 -->
-      <div class="feedback-container" id="feedback-container" aria-live="polite">
-        <div class="character-reaction" id="character-reaction">✨</div>
-        <div class="feedback-message" id="feedback-message"></div>
+      <!-- 피드백 메시지 (크게 표시) -->
+      <div class="feedback-area" id="feedback-area" aria-live="assertive">
+        <div class="feedback-badge" id="feedback-badge"></div>
       </div>
     </main>
+
+    <!-- 최종 결과 화면 (10문제 완료 시 노출) -->
+    <section class="result-screen hidden" id="result-screen" aria-label="최종 결과">
+      <div class="result-card">
+        <div class="result-icon" id="result-icon">🏆</div>
+        <h2 class="result-title">구구단 챌린지 종료!</h2>
+        <div class="result-score" id="result-score">10개 중 10개 정답!</div>
+        <div class="result-comment" id="result-comment">완벽해요! 최고예요! 🎉</div>
+        
+        <div class="result-teacher-quote">
+          <div class="quote-avatar">👩‍🏫</div>
+          <div class="quote-text" id="quote-text">
+            "정말 대단해! 쟈니 쌤이 특급 칭찬 도장을 찍어줄게!"
+          </div>
+        </div>
+
+        <button type="button" id="restart-btn" class="action-btn restart-btn">
+          🔄 다시 도전하기
+        </button>
+      </div>
+    </section>
   </div>
 
   <script src="app.js"></script>

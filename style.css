@@ -1,0 +1,612 @@
+/* 기본 리셋 및 폰트 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Jua', 'Nanum Round', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  transition: background 0.4s ease, color 0.4s ease;
+  user-select: none;
+}
+
+/* =========================================
+   테마 1: 핑크색 귀여운 공주 테마 (Princess)
+   ========================================= */
+body.theme-princess {
+  background: linear-gradient(135deg, #ffeef8 0%, #ffd6ed 50%, #ffc2e2 100%);
+  color: #5c2741;
+}
+
+body.theme-princess .game-container {
+  background: rgba(255, 255, 255, 0.94);
+  border: 4px solid #ff9ed2;
+  box-shadow: 0 16px 36px rgba(255, 114, 182, 0.25), 0 0 0 6px #ffeaf4;
+}
+
+body.theme-princess .game-title {
+  color: #e0287d;
+  text-shadow: 2px 2px 0 #ffd1ea;
+}
+
+body.theme-princess .theme-btn.active {
+  background: #ff4d9e;
+  color: #ffffff;
+  border-color: #d81e77;
+  box-shadow: 0 4px 12px rgba(255, 77, 158, 0.4);
+}
+
+body.theme-princess .theme-btn:not(.active) {
+  background: #fff0f7;
+  color: #b33973;
+  border-color: #ffcbe3;
+}
+
+body.theme-princess .progress-fill {
+  background: linear-gradient(90deg, #ff7bb0, #ff2a85);
+}
+
+body.theme-princess .question-number-badge,
+body.theme-princess .score-badge {
+  background: #ffe3f1;
+  color: #c9186c;
+  border: 2px solid #ffbade;
+}
+
+body.theme-princess .teacher-container {
+  background: #fff5fa;
+  border: 3px solid #ffc2df;
+}
+
+body.theme-princess .teacher-name {
+  color: #ff2a85;
+}
+
+body.theme-princess .num-box {
+  background: #fff0f7;
+  border: 3px solid #ffaed8;
+  color: #d11a72;
+  box-shadow: 0 6px 0 #f08cb9;
+}
+
+body.theme-princess .question-box {
+  background: #ffe680;
+  border-color: #f5b000;
+  color: #b37400;
+  box-shadow: 0 6px 0 #d99b00;
+}
+
+body.theme-princess .answer-input {
+  border: 4px solid #ff9ed2;
+  background: #ffffff;
+  color: #b81467;
+}
+
+body.theme-princess .answer-input:focus {
+  border-color: #ff2a85;
+  outline: none;
+  box-shadow: 0 0 0 5px rgba(255, 42, 133, 0.2);
+}
+
+body.theme-princess .check-btn {
+  background: linear-gradient(180deg, #ff59a4 0%, #e82079 100%);
+  color: #ffffff;
+  border: 3px solid #bf0e5e;
+  box-shadow: 0 6px 0 #9c0b4c, 0 10px 16px rgba(232, 32, 121, 0.3);
+}
+
+body.theme-princess .check-btn:active {
+  box-shadow: 0 2px 0 #9c0b4c;
+  transform: translateY(4px);
+}
+
+body.theme-princess .restart-btn {
+  background: linear-gradient(180deg, #ff59a4 0%, #e82079 100%);
+  color: #ffffff;
+  border: 3px solid #bf0e5e;
+  box-shadow: 0 6px 0 #9c0b4c;
+}
+
+/* =========================================
+   테마 2: 하늘색 멋진 왕자 테마 (Prince)
+   ========================================= */
+body.theme-prince {
+  background: linear-gradient(135deg, #e3f5ff 0%, #c4e9ff 50%, #9dd6ff 100%);
+  color: #173852;
+}
+
+body.theme-prince .game-container {
+  background: rgba(255, 255, 255, 0.94);
+  border: 4px solid #7bc6ff;
+  box-shadow: 0 16px 36px rgba(45, 140, 220, 0.25), 0 0 0 6px #e6f4ff;
+}
+
+body.theme-prince .game-title {
+  color: #0b72c9;
+  text-shadow: 2px 2px 0 #c2e5ff;
+}
+
+body.theme-prince .theme-btn.active {
+  background: #188bf6;
+  color: #ffffff;
+  border-color: #0968c2;
+  box-shadow: 0 4px 12px rgba(24, 139, 246, 0.4);
+}
+
+body.theme-prince .theme-btn:not(.active) {
+  background: #e8f5ff;
+  color: #1a6dae;
+  border-color: #bde0ff;
+}
+
+body.theme-prince .progress-fill {
+  background: linear-gradient(90deg, #5ec7ff, #0077e6);
+}
+
+body.theme-prince .question-number-badge,
+body.theme-prince .score-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 2px solid #bae6fd;
+}
+
+body.theme-prince .teacher-container {
+  background: #f0f9ff;
+  border: 3px solid #b9e6fe;
+}
+
+body.theme-prince .teacher-name {
+  color: #0284c7;
+}
+
+body.theme-prince .num-box {
+  background: #eaf6ff;
+  border: 3px solid #7cc5fb;
+  color: #0a69b7;
+  box-shadow: 0 6px 0 #5aa7dc;
+}
+
+body.theme-prince .question-box {
+  background: #ffe680;
+  border-color: #f5b000;
+  color: #b37400;
+  box-shadow: 0 6px 0 #d99b00;
+}
+
+body.theme-prince .answer-input {
+  border: 4px solid #7bc6ff;
+  background: #ffffff;
+  color: #0b6cb8;
+}
+
+body.theme-prince .answer-input:focus {
+  border-color: #0284c7;
+  outline: none;
+  box-shadow: 0 0 0 5px rgba(2, 132, 199, 0.2);
+}
+
+body.theme-prince .check-btn {
+  background: linear-gradient(180deg, #269bfb 0%, #0072d6 100%);
+  color: #ffffff;
+  border: 3px solid #0056a3;
+  box-shadow: 0 6px 0 #003e75, 0 10px 16px rgba(0, 114, 214, 0.3);
+}
+
+body.theme-prince .check-btn:active {
+  box-shadow: 0 2px 0 #003e75;
+  transform: translateY(4px);
+}
+
+body.theme-prince .restart-btn {
+  background: linear-gradient(180deg, #269bfb 0%, #0072d6 100%);
+  color: #ffffff;
+  border: 3px solid #0056a3;
+  box-shadow: 0 6px 0 #003e75;
+}
+
+/* =========================================
+   공통 컨테이너 및 레이아웃
+   ========================================= */
+.game-container {
+  width: 100%;
+  max-width: 540px;
+  border-radius: 28px;
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 테마 선택 바 */
+.theme-selector-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.theme-label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.theme-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.theme-btn {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* 게임 타이틀 */
+.game-header {
+  text-align: center;
+}
+
+.game-title {
+  font-size: 1.85rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.game-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* 프로그레스 바 영역 */
+.progress-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-number-badge,
+.score-badge {
+  font-size: 1rem;
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-weight: bold;
+}
+
+.progress-track {
+  width: 100%;
+  height: 14px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* 캐릭터 말풍선 (쟈니 쌤) */
+.teacher-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.teacher-avatar {
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  animation: bounceSoft 2.5s infinite;
+}
+
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.teacher-bubble {
+  flex: 1;
+}
+
+.teacher-name {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.teacher-speech {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+/* 문제 카드 */
+.quiz-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.problem-card {
+  padding: 22px 10px;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.04), 0 8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.multiplication-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.num-box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 68px;
+  height: 72px;
+  border-radius: 18px;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.calc-op, .calc-equal {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #94a3b8;
+}
+
+/* 답안 입력 및 확인 버튼 */
+.answer-form {
+  width: 100%;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.answer-input {
+  width: 160px;
+  height: 64px;
+  font-family: inherit;
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+/* input type=number의 화살표 숨김 */
+.answer-input::-webkit-outer-spin-button,
+.answer-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.answer-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.action-btn {
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.1s ease;
+}
+
+.check-btn {
+  padding: 0 32px;
+  height: 64px;
+}
+
+/* 피드백 표시 영역 */
+.feedback-area {
+  min-height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -6px;
+}
+
+.feedback-badge {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 8px 22px;
+  border-radius: 20px;
+  text-align: center;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feedback-badge.correct {
+  background: #dcfce7;
+  color: #15803d;
+  border: 3px solid #86efac;
+  font-size: 2.2rem;
+  transform: scale(1.05);
+}
+
+.feedback-badge.wrong {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 3px solid #fca5a5;
+  font-size: 1.35rem;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 쉐이크 애니메이션 (오답 시) */
+.shake {
+  animation: shakeAnim 0.4s ease-in-out;
+}
+
+@keyframes shakeAnim {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* 정답 펄스 애니메이션 */
+.pulse-correct {
+  animation: pulseAnim 0.5s ease-out;
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* 결과 화면 */
+.result-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.result-screen.hidden,
+.quiz-screen.hidden {
+  display: none !important;
+}
+
+.result-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.result-icon {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.result-title {
+  font-size: 1.6rem;
+  color: #334155;
+}
+
+.result-score {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 2px dashed #cbd5e1;
+}
+
+.result-comment {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ea580c;
+}
+
+.result-teacher-quote {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 12px 18px;
+  width: 100%;
+  text-align: left;
+}
+
+.quote-avatar {
+  font-size: 2.4rem;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  line-height: 1.35;
+  font-weight: bold;
+  color: #475569;
+}
+
+.restart-btn {
+  margin-top: 10px;
+  padding: 14px 38px;
+  font-size: 1.3rem;
+  border-radius: 22px;
+}
+
+.restart-btn:active {
+  transform: translateY(4px);
+}
+
+/* 모바일 및 작은 화면 반응형 대응 */
+@media (max-width: 480px) {
+  .game-container {
+    padding: 16px 14px;
+  }
+  .num-box {
+    width: 54px;
+    height: 60px;
+    font-size: 2rem;
+    border-radius: 14px;
+  }
+  .calc-op, .calc-equal {
+    font-size: 1.8rem;
+  }
+  .answer-input {
+    width: 130px;
+    height: 56px;
+    font-size: 2rem;
+  }
+  .check-btn {
+    padding: 0 24px;
+    height: 56px;
+    font-size: 1.25rem;
+  }
+}
