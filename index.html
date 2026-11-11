@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신나는 구구단 챌린지! 🎈</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <!-- 헤더 / 제목 영역 -->
+    <header class="game-header">
+      <h1 class="game-title">신나는 구구단 챌린지! 🎈</h1>
+      <p class="game-subtitle">5초 안에 정답을 맞춰보세요!</p>
+    </header>
+
+    <!-- 스코어보드 영역: 현재 점수, 콤보, 푼 문제 수 -->
+    <section class="scoreboard" aria-label="점수판">
+      <div class="score-card">
+        <span class="label">점수 🌟</span>
+        <span class="value" id="score-display">0</span>
+      </div>
+      <div class="score-card">
+        <span class="label">연속 정답 🔥</span>
+        <span class="value" id="combo-display">0</span>
+      </div>
+      <div class="score-card">
+        <span class="label">푼 문제 📝</span>
+        <span class="value" id="count-display">0</span>
+      </div>
+    </section>
+
+    <!-- 타이머 영역: 남은 시간 텍스트 및 프로그레스 바 게이지 -->
+    <section class="timer-section" aria-label="제한 시간">
+      <div class="timer-info">
+        <span class="timer-label">⏰ 남은 시간:</span>
+        <span class="timer-text" id="timer-text">5.0초</span>
+      </div>
+      <div class="timer-progress-container" aria-hidden="true">
+        <div class="timer-bar" id="timer-bar" style="width: 100%;"></div>
+      </div>
+    </section>
+
+    <!-- 문제 카드 영역 -->
+    <main class="question-container">
+      <div class="question-card" id="question-card">
+        <div class="math-problem">
+          <span class="num" id="num1">?</span>
+          <span class="operator" id="operator">×</span>
+          <span class="num" id="num2">?</span>
+          <span class="equal">=</span>
+          <span class="question-mark">?</span>
+        </div>
+      </div>
+
+      <!-- 답안 입력 및 조작 영역 -->
+      <form class="answer-form" id="answer-form" onsubmit="return false;">
+        <div class="input-wrapper">
+          <input
+            type="number"
+            id="answer-input"
+            class="answer-input"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            placeholder="정답은?"
+            autofocus
+            autocomplete="off"
+            aria-label="정답 입력"
+          >
+          <button type="submit" id="submit-btn" class="action-btn submit-btn">확인</button>
+        </div>
+        <button type="button" id="next-btn" class="action-btn next-btn hidden">다음 문제 ➡️</button>
+      </form>
+
+      <!-- 피드백 및 결과 메시지 영역 -->
+      <div class="feedback-container" id="feedback-container" aria-live="polite">
+        <div class="character-reaction" id="character-reaction">✨</div>
+        <div class="feedback-message" id="feedback-message"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
